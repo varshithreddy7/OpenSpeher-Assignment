@@ -3,6 +3,9 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --app-canvas: #f6f6f5;
+  --app-border: rgba(15, 23, 42, 0.12);
+  --app-muted: rgba(15, 23, 42, 0.06);
 }
 
 @theme inline {
@@ -23,4 +26,119 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.toolbar {
+  border-color: var(--app-border);
+}
+
+.page-shell {
+  width: min(100%, 816px);
+}
+
+.page-paper {
+  border-color: var(--app-border);
+}
+
+.editor-shell .ProseMirror {
+  outline: none;
+  color: rgb(17 24 39);
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+.editor-shell .ProseMirror > * + * {
+  margin-top: 0.7rem;
+}
+
+.editor-shell .ProseMirror h1 {
+  font-size: 30px;
+  line-height: 1.2;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  margin-top: 0.2rem;
+}
+
+.editor-shell .ProseMirror h2 {
+  font-size: 22px;
+  line-height: 1.25;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  margin-top: 1.2rem;
+}
+
+.editor-shell .ProseMirror h3 {
+  font-size: 18px;
+  line-height: 1.35;
+  font-weight: 650;
+  margin-top: 1rem;
+}
+
+.editor-shell .ProseMirror ul {
+  padding-left: 1.2rem;
+  list-style: disc;
+}
+
+.editor-shell .ProseMirror li {
+  margin: 0.2rem 0;
+}
+
+.editor-shell .ProseMirror strong {
+  font-weight: 650;
+}
+
+.pm-page-top-spacer,
+.pm-page-break,
+.pm-page-bottom-spacer {
+  display: block;
+  height: var(--pm-spacer-height);
+  pointer-events: none;
+}
+
+@media print {
+  @page {
+    size: letter;
+    margin: 1in;
+  }
+
+  html,
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  .toolbar {
+    display: none !important;
+  }
+
+  .page-overlay,
+  .page-number,
+  .page-break-indicator {
+    display: none !important;
+  }
+
+  .page-shell {
+    width: auto !important;
+    max-width: none !important;
+  }
+
+  .page-content-padding {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .page-content-column {
+    width: auto !important;
+    max-width: none !important;
+  }
+
+  .pm-page-top-spacer,
+  .pm-page-bottom-spacer {
+    display: none !important;
+  }
+
+  .pm-page-break {
+    height: 0 !important;
+    break-before: page;
+  }
 }
